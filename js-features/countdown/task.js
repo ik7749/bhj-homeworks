@@ -1,15 +1,14 @@
-const cookie = document.getElementById('cookie');
-const counter = document.getElementById('clicker__counter');
+const timerElement = document.getElementById('timer');
+const intervalId = setInterval(timer, 1000);
+let count = Number(timerElement.textContent);
 
-cookie.onclick = function() {
-	let count = Number(counter.textContent);
-	counter.textContent = count + 1;
+function timer() {
+	count = count - 1;
+	timerElement.textContent = count;
 
-	if (count % 2 === 0) {
-		cookie.width = 200;
-		cookie.height = 200;
-	} else {
-		cookie.width = 220;
-		cookie.height = 220;
+	if (count <= 0) {
+		clearInterval(intervalId);
+		alert('Вы победили в конкурсе!');
+		return;
 	}
-}
+};
