@@ -9,6 +9,5 @@ function timer() {
 	if (count <= 0) {
 		clearInterval(intervalId);
 		alert('Вы победили в конкурсе!');
-		return;
 	}
-};
+}
