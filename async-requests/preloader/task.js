@@ -3,12 +3,12 @@ const items = document.getElementById('items');
 const xhr = new XMLHttpRequest();
 const url = 'https://students.netoservices.ru/nestjs-backend/slow-get-courses';
 xhr.open('GET', url, true);
+xhr.responseType = 'json';
 xhr.send();
 
-xhr.addEventListener('readystatechange', () => {
-    if (xhr.readyState === xhr.DONE) {
+xhr.addEventListener('load', () => {
       loader.classList.remove('loader_active');
-        const responseObject = JSON.parse(xhr.responseText).response.Valute;
+        const responseObject = xhr.response.response.Valute;
         for (let valute in responseObject) {
             let newValute = document.createElement('div');
             newValute.classList.add('item');
@@ -24,5 +24,4 @@ xhr.addEventListener('readystatechange', () => {
                 </div>`
                 items.append(newValute);
         }
-    }
-})
+    })
