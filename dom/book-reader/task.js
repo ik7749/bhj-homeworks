@@ -1,11 +1,9 @@
-const size = Array.from(document.querySelectorAll('.font-size'));
-const book = document.querySelector('.book__content');
-
-size.forEach((item) => {
+Array.from(document.querySelectorAll('.font-size')).forEach((item) => {
 	item.addEventListener('click', (event) => {
 		event.preventDefault();
-		size.forEach((fontSizeA) => fontSizeA.classList.remove('font-size_active'));
+		Array.from(document.querySelectorAll('.font-size')).forEach((fontSizeA) => fontSizeA.classList.remove('font-size_active'));
 		let fontData = event.target.dataset.size;
+		const book = document.querySelector('.book__content');
 		if (fontData === 'small') {
 			event.target.classList.remove('font-size_active');
 			book.classList.remove('book_fs-big');
